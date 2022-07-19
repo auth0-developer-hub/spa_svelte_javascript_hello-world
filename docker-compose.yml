@@ -2,10 +2,9 @@ version: "3"
 services:
   api:
     build: .
-    image: spa_svelte_js_hello-world:basic-authn
-    container_name: spa_svelte_js_hello-world_basic-authn
+    image: spa_svelte_js_hello-world:basic-authn-with-api
+    container_name: spa_svelte_js_hello-world_basic-authn-with-api
     ports:
       - 4040:4040
-      - 6060:6060
     env_file:
       - .env

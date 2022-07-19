@@ -2,10 +2,15 @@
   import { onMount } from "svelte";
   import CodeSnippet from "../components/code-snippet.svelte";
   import PageLayout from "../components/page-layout.svelte";
+  import { useAuth0 } from "../services/auth0.js";
   import { getProtectedResource, message } from "../services/message.service";
 
-  onMount(() => {
-    getProtectedResource();
+  const { getAccessToken } = useAuth0;
+
+  onMount(async () => {
+    const accessToken = await getAccessToken();
+
+    await getProtectedResource(accessToken);
   });
 </script>
 

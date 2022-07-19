@@ -3,9 +3,14 @@
   import CodeSnippet from "../components/code-snippet.svelte";
   import PageLayout from "../components/page-layout.svelte";
   import { getAdminResource, message } from "../services/message.service";
+  import { useAuth0 } from "../services/auth0";
 
-  onMount(() => {
-    getAdminResource();
+  const { getAccessToken } = useAuth0;
+
+  onMount(async () => {
+    const accessToken = await getAccessToken();
+
+    await getAdminResource(accessToken);
   });
 </script>
 
