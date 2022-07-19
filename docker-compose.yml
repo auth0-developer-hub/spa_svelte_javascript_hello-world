@@ -1,0 +1,11 @@
+version: "3"
+services:
+  api:
+    build: .
+    image: spa_svelte_js_hello-world:starter
+    container_name: spa_svelte_js_hello-world_starter
+    ports:
+      - 4040:4040
+      - 6060:6060
+    env_file:
+      - .env
