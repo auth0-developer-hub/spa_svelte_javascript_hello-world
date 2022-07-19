@@ -19,7 +19,7 @@
           API.
         </span>
         <span>
-          <strong>Only authenticated users should access this page.</strong>
+          <strong>Only authenticated users can access this page.</strong>
         </span>
       </p>
       <CodeSnippet title="Protected Message" code={$message} />
