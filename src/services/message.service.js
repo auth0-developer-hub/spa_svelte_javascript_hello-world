@@ -1,5 +1,8 @@
 import { writable } from "svelte/store";
 import { callExternalApi } from "./external-api.service";
+import { useAuth0 } from "./auth0";
+
+let { getAccessToken, isAuthenticated } = useAuth0;
 
 const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
 
@@ -26,11 +29,14 @@ export const getPublicResource = async () => {
 };
 
 export const getProtectedResource = async () => {
+  const accessToken = await getAccessToken();
+
   const config = {
     url: `${apiServerUrl}/api/messages/protected`,
     method: "GET",
     headers: {
       "content-type": "application/json",
+      "Authorization": `Bearer ${accessToken}`
     },
   };
 
@@ -46,11 +52,14 @@ export const getProtectedResource = async () => {
 };
 
 export const getAdminResource = async () => {
+  const accessToken = await getAccessToken();
+
   const config = {
     url: `${apiServerUrl}/api/messages/admin`,
     method: "GET",
     headers: {
       "content-type": "application/json",
+      "Authorization": `Bearer ${accessToken}`,
     },
   };
 
