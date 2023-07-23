@@ -2,7 +2,7 @@ import { writable } from "svelte/store";
 import { callExternalApi } from "./external-api.service";
 import { useAuth0 } from "./auth0";
 
-let { getAccessToken, isAuthenticated } = useAuth0;
+let { getAccessToken } = useAuth0;
 
 const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
 
