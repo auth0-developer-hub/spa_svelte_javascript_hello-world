@@ -25,12 +25,13 @@ export const getPublicResource = async () => {
   }
 };
 
-export const getProtectedResource = async () => {
+export const getProtectedResource = async (accessToken) => {
   const config = {
     url: `${apiServerUrl}/api/messages/protected`,
     method: "GET",
     headers: {
       "content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
   };
 
@@ -45,12 +46,13 @@ export const getProtectedResource = async () => {
   }
 };
 
-export const getAdminResource = async () => {
+export const getAdminResource = async (accessToken) => {
   const config = {
     url: `${apiServerUrl}/api/messages/admin`,
     method: "GET",
     headers: {
       "content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
   };
 
